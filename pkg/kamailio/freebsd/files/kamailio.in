@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# PROVIDE: kamailio
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable kamailio:
+#
+# kamailio_enable="YES"
+#
+
+. /etc/rc.subr
+
+name=kamailio
+rcvar=kamailio_enable
+
+load_rc_config $name
+: ${kamailio_enable="NO"}
+: ${kamailio_conf="/usr/local/etc/kamailio/kamailio.cfg"}
+: ${kamailio_pidfile="/var/run/${name}.pid"}
+
+kamailio_flags="${kamailio_flags} -f ${kamailio_conf} -P ${kamailio_pidfile}"
+
+command="/usr/local/sbin/kamailio"
+extra_commands="checkconfig"
+checkconfig_cmd="checkconfig"
+
+checkconfig()
+{
+    echo "Performing sanity check on ${name} config file:"
+    eval ${command} -c -f ${kamailio_conf}
+}
+
+run_rc_command "$1" 
