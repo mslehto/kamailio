@@ -2171,7 +2171,7 @@ int ds_get_state(int group, str *address)
 }
 
 /**
- * Update destionation's state
+ * Update destination's state
  */
 int ds_update_state(sip_msg_t *msg, int group, str *address, int state)
 {
@@ -2222,7 +2222,7 @@ int ds_update_state(sip_msg_t *msg, int group, str *address, int state)
 				idx->dlist[i].message_count++;
 				/* Destination is not replying.. Increasing failure counter */
 				if(idx->dlist[i].message_count >= probing_threshold) {
-					/* Destionation has too much lost messages.. Bringing it to inactive state */
+					/* Destination has too much lost messages.. Bringing it to inactive state */
 					idx->dlist[i].flags &= ~DS_TRYING_DST;
 					idx->dlist[i].flags |= DS_INACTIVE_DST;
 					idx->dlist[i].message_count = 0;
