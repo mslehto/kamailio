@@ -1706,6 +1706,9 @@ endif #mode=release
 ifeq ($(CC_NAME), gcc)
 		CFLAGS+= -Wall
 else # no gcc
+ifeq ($(CC_NAME), clang)
+		CFLAGS+= -Wall
+else # no clang
 ifeq ($(CC_NAME), icc)
 		CFLAGS+= -Wall
 else # no icc
@@ -1713,6 +1716,7 @@ ifeq ($(CC_NAME), suncc)
 		# FIXME: is the default (-Xa ?) enough?
 endif # CC_NAME=suncc
 endif # CC_NAME=icc
+endif # CC_NAME=clang
 endif # CC_NAME=gcc
 
 #CFLAGS used for compiling the modules, libraries and utils
