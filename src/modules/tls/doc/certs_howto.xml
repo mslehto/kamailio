@@ -109,7 +109,7 @@ Setting &kamailio; to use the TLS certificate
 	intended machine (preferably in your &kamailio; configuration directory,
 	 this is the default place &kamailio; searches for).
 
-3. Set up &kamailio; to use the certificate
+3. Set up &kamailioconfig; to use the certificate
 	if your &kamailio; certificate name is different from cert.pem or it is not
 	placed in &kamailio; cfg. directory, add to your &kamailioconfig;:
 		modparam("tls", "certificate", "/path/cert_file_name")
